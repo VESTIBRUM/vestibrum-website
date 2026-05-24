@@ -849,66 +849,11 @@ footer {
   </div>
 
   <div class="hero-figure">
-    <!-- ANATOMICAL SVG: inner ear vestibular apparatus with otolith organs labeled -->
-    <svg class="anatomy-svg" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-      <!-- Outer chamber (vestibule) -->
-      <ellipse cx="240" cy="240" rx="140" ry="120" class="struct" stroke-dasharray="2 3" opacity="0.4"/>
-
-      <!-- Semicircular canals (background, deemphasized — these are NOT what Otoli targets) -->
-      <path d="M 240 100 Q 360 130 360 240" class="struct" opacity="0.25" stroke-dasharray="1 2"/>
-      <path d="M 360 240 Q 360 350 240 380" class="struct" opacity="0.25" stroke-dasharray="1 2"/>
-      <path d="M 240 100 Q 120 130 120 240" class="struct" opacity="0.25" stroke-dasharray="1 2"/>
-
-      <!-- UTRICLE (otolith organ, emphasized) -->
-      <ellipse cx="200" cy="220" rx="48" ry="32" class="struct" transform="rotate(-15 200 220)"/>
-      <!-- Otoconia (calcium carbonate crystals) inside utricle -->
-      <g transform="rotate(-15 200 220)">
-        <circle cx="190" cy="215" r="2" class="crystal"/>
-        <circle cx="198" cy="218" r="2.3" class="crystal"/>
-        <circle cx="206" cy="214" r="1.8" class="crystal"/>
-        <circle cx="194" cy="223" r="2" class="crystal"/>
-        <circle cx="210" cy="221" r="2.2" class="crystal"/>
-        <circle cx="202" cy="226" r="1.9" class="crystal"/>
-        <circle cx="186" cy="222" r="1.7" class="crystal"/>
-      </g>
-
-      <!-- SACCULE (otolith organ, emphasized) -->
-      <ellipse cx="280" cy="278" rx="42" ry="28" class="struct" transform="rotate(20 280 278)"/>
-      <!-- Otoconia inside saccule -->
-      <g transform="rotate(20 280 278)">
-        <circle cx="272" cy="273" r="2" class="crystal"/>
-        <circle cx="280" cy="276" r="2.2" class="crystal"/>
-        <circle cx="288" cy="272" r="1.9" class="crystal"/>
-        <circle cx="276" cy="281" r="2.1" class="crystal"/>
-        <circle cx="290" cy="280" r="1.8" class="crystal"/>
-        <circle cx="284" cy="284" r="2" class="crystal"/>
-      </g>
-
-      <!-- LABELS -->
-      <!-- Utricle label -->
-      <line x1="160" y1="195" x2="100" y2="160" class="label-line"/>
-      <line x1="100" y1="160" x2="50" y2="160" class="label-line"/>
-      <text x="48" y="156" class="label-text-it" text-anchor="end">utricle</text>
-      <text x="48" y="172" class="label-text" text-anchor="end">UTRICULUS</text>
-
-      <!-- Saccule label -->
-      <line x1="320" y1="295" x2="395" y2="320" class="label-line"/>
-      <line x1="395" y1="320" x2="445" y2="320" class="label-line"/>
-      <text x="447" y="316" class="label-text-it">saccule</text>
-      <text x="447" y="332" class="label-text">SACCULUS</text>
-
-      <!-- Otoconia label -->
-      <line x1="206" y1="216" x2="240" y2="120" class="label-line"/>
-      <line x1="240" y1="120" x2="320" y2="120" class="label-line"/>
-      <text x="322" y="116" class="label-text-it">otoliths</text>
-      <text x="322" y="132" class="label-text">CALCIUM CARBONATE</text>
-
-      <!-- Vestibule label -->
-      <line x1="240" y1="365" x2="240" y2="420" class="label-line"/>
-      <text x="240" y="442" class="label-text-it" text-anchor="middle">vestibulum</text>
-      <text x="240" y="458" class="label-text" text-anchor="middle">THE INNER EAR</text>
-
-    </svg>
+    <img
+      class="anatomy-svg"
+      src="otolithic_organs_diagram.png"
+      alt="Two-panel diagram showing the otolithic organs (utricle and saccule) detecting linear acceleration via otoconia and hair cells, and the neural pathway from the vestibular nerve through the brainstem to NREM sleep promotion."
+    />
   </div>
 </section>
 
