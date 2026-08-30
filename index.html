@@ -702,6 +702,49 @@ section {
   border-color: var(--copper);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.signup-status {
+  min-height: 22px;
+  margin: 18px auto 0;
+  max-width: 480px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.signup-status.is-ok { color: var(--copper); }
+.signup-status.is-err { color: #9B2C2C; }
+
+.signup-consent {
+  max-width: 480px;
+  margin: 10px auto 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--gray-light);
+}
+
+.signup-consent a {
+  color: var(--gray);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.signup-consent a:hover { color: var(--copper); border-color: var(--copper); }
+
+.signup-input:disabled, .signup-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
 .contact-direct {
   margin-top: 64px;
   padding-top: 48px;
@@ -1038,10 +1081,30 @@ footer {
     Join the early notification list for Otoli. We'll share progress as the science becomes the product — no spam, no pressure, no urgency mechanics. Just thoughtful updates.
   </p>
 
-  <form class="signup-form" onsubmit="event.preventDefault(); this.querySelector('.signup-btn').textContent = 'Thank you'; setTimeout(() => this.reset(), 100);">
-    <input type="email" class="signup-input" placeholder="Your email address" required>
-    <button type="submit" class="signup-btn">Join the list</button>
+  <form class="signup-form" id="signup-form" novalidate>
+    <label class="visually-hidden" for="signup-email">Your email address</label>
+    <input
+      type="email"
+      id="signup-email"
+      name="email"
+      class="signup-input"
+      placeholder="Your email address"
+      autocomplete="email"
+      inputmode="email"
+      required
+      aria-describedby="signup-status"
+    >
+    <!-- Honeypot: hidden from people, tempting to bots. -->
+    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="signup-btn" id="signup-btn">Join the list</button>
   </form>
+
+  <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
+
+  <p class="signup-consent">
+    We use your address only to send Otoli updates. Unsubscribe any time.
+    See our <a href="/privacy">Privacy Policy</a>.
+  </p>
 
   <div class="contact-direct">
     <p class="contact-direct-label">For investors, partners, and clinicians</p>
@@ -1058,10 +1121,100 @@ footer {
     <div class="footer-meta">
       <p>Delaware C-Corp · USPTO Provisional Patent · 2026</p>
       <p style="margin-top: 8px;"><a href="mailto:info@vestibrum.com">info@vestibrum.com</a></p>
+      <p style="margin-top: 8px;"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
     </div>
   </div>
 </footer>
 
 </div>
+<script>
+(function () {
+  /* ------------------------------------------------------------------
+     Mailing list endpoint.
+
+     Set this to a form-handling endpoint that delivers to an inbox you
+     control -- e.g. Formspree ("https://formspree.io/f/xxxxxxxx"),
+     Basin, Getform, or a Mailchimp/Beehiiv embedded form action.
+
+     While it is empty, the form falls back to opening the visitor's mail
+     client addressed to info@vestibrum.com. That is worse UX than a real
+     endpoint, but it actually reaches a human -- which the previous
+     version did not.
+     ------------------------------------------------------------------ */
+  var FORM_ENDPOINT = 'https://formspree.io/f/mppzwbdp';
+
+  var FALLBACK_ADDRESS = 'info@vestibrum.com';
+
+  var form   = document.getElementById('signup-form');
+  var input  = document.getElementById('signup-email');
+  var btn    = document.getElementById('signup-btn');
+  var status = document.getElementById('signup-status');
+
+  if (!form) return;
+
+  function say(msg, kind) {
+    status.textContent = msg;
+    status.className = 'signup-status' + (kind ? ' is-' + kind : '');
+  }
+
+  function busy(on) {
+    input.disabled = on;
+    btn.disabled = on;
+    btn.textContent = on ? 'Sending…' : 'Join the list';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var email = (input.value || '').trim();
+
+    if (!email || !input.checkValidity()) {
+      say('Please enter a valid email address.', 'err');
+      input.focus();
+      return;
+    }
+
+    // Honeypot tripped -- silently pretend to succeed, drop the submission.
+    if (form.querySelector('[name="_gotcha"]').value) {
+      say('Thank you — you are on the list.', 'ok');
+      form.reset();
+      return;
+    }
+
+    if (!FORM_ENDPOINT) {
+      var subject = encodeURIComponent('Otoli early notification list');
+      var body    = encodeURIComponent(
+        'Please add me to the Otoli early notification list.\n\nEmail: ' + email + '\n'
+      );
+      say('Opening your email app to finish — send the message and you are on the list.');
+      window.location.href =
+        'mailto:' + FALLBACK_ADDRESS + '?subject=' + subject + '&body=' + body;
+      return;
+    }
+
+    busy(true);
+    say('');
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'vestibrum.com homepage' })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.reset();
+        say('Thank you — you are on the list.', 'ok');
+      })
+      .catch(function () {
+        say(
+          'Something went wrong. Please email ' + FALLBACK_ADDRESS + ' and we will add you.',
+          'err'
+        );
+      })
+      .finally(function () { busy(false); });
+  });
+})();
+</script>
+
 </body>
 </html>
