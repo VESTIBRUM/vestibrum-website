@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Otoli | Built to soothe. Designed to step back.</title>
+<meta name="description" content="Otoli is a smart infant sleep system in development, designed to soothe your baby and then gently step back, night by night, toward independent sleep.">
+<meta property="og:title" content="Otoli | Built to soothe. Designed to step back.">
+<meta property="og:description" content="A smart infant sleep system in development, designed to soothe and then step back toward independent sleep.">
+<meta property="og:image" content="https://getotoli.com/otoli/img/bassinet-side.jpg">
+<meta property="og:url" content="https://getotoli.com/">
+<link rel="canonical" href="https://getotoli.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A2B; --ink-2:#1B2A40; --cream:#F5EFE6; --cream-deep:#ECE4D6; --paper:#FBF8F3;
+  --copper:#A8533B; --copper-soft:#C97A5E; --gray:#5B6471; --gray-light:#8A929E;
+  --line:rgba(14,26,43,.12); --line-strong:rgba(14,26,43,.24);
+  --display:'Cormorant Garamond','Times New Roman',serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+  --gutter:clamp(16px,5vw,64px);
+  --max:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.serif{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+.muted{color:var(--gray)}
+.super{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-light)}
+
+/* Header */
+header.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);background:rgba(245,239,230,.86);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:30px;font-weight:600;text-decoration:none;letter-spacing:.01em;line-height:1}
+.top-cta{font-size:14px;font-weight:500;text-decoration:none;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--cream)}
+.progress{position:fixed;left:0;top:0;height:3px;background:var(--copper);width:0;z-index:60;transition:width .2s linear}
+
+/* Chapter rail */
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:14px}
+.rail a{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none}
+.rail .dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink);opacity:.35;transition:all .25s}
+.rail .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:0;transform:translateX(6px);transition:all .25s;color:var(--ink);white-space:nowrap}
+.rail a:hover .lbl,.rail a.on .lbl{opacity:.8;transform:none}
+.rail a.on .dot{background:var(--copper);border-color:var(--copper);opacity:1;transform:scale(1.25)}
+@media (max-width:900px){.rail{display:none}}
+
+/* Chapters */
+.chapter{min-height:100svh;padding:120px 0 90px;display:flex;align-items:center;position:relative}
+.chapter.dark{background:var(--ink);color:var(--cream)}
+.chapter.dark .muted{color:#AEB6C2}
+.chapter.deep{background:var(--cream-deep)}
+.chapter.paper{background:var(--paper)}
+.ch-num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--copper-soft);margin-bottom:18px;display:block}
+h1.big{font-size:clamp(46px,8vw,104px);line-height:.98}
+h2.title{font-size:clamp(38px,5.6vw,72px);line-height:1.02;margin-bottom:22px}
+h3{font-family:var(--display);font-weight:600;font-size:26px;line-height:1.15}
+.lede{font-size:clamp(18px,2vw,21px);max-width:640px}
+.next{margin-top:44px;display:inline-flex;align-items:center;gap:12px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:13px 22px;font-weight:500;font-size:15px;text-decoration:none}
+.next:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.chapter.dark .next:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.next .arr{transition:transform .2s}
+.next:hover .arr{transform:translateY(3px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--ink)}
+.btn.solid{background:var(--ink);color:var(--cream)}
+.btn.ghost{background:transparent;color:var(--ink)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* Hero */
+.hero{background:radial-gradient(120% 90% at 85% 10%,#1E3150 0%,var(--ink) 55%) ;color:var(--cream)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero .lede{color:#D5DAE2;margin:26px 0 34px}
+.hero .btn.solid{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.hero .btn.ghost{color:var(--cream);border-color:rgba(245,239,230,.5)}
+.clock{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--copper-soft);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.clock .blink{width:8px;height:8px;border-radius:50%;background:var(--copper-soft);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.2}}
+.hero-art{position:relative;border-radius:28px;overflow:hidden;background:#fff;aspect-ratio:3/4}
+.hero-art img{width:100%;height:100%;object-fit:cover}
+.hero-art .super{position:absolute;left:14px;bottom:12px;color:#9AA1AB}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-art{max-width:420px;aspect-ratio:4/3.4}}
+
+/* Story beats */
+.beats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+.beat{border:1px solid rgba(245,239,230,.18);border-radius:20px;padding:26px;background:rgba(255,255,255,.03)}
+.beat .t{font-family:var(--mono);font-size:12px;color:var(--copper-soft);letter-spacing:.08em}
+.beat p{margin-top:10px;color:#D5DAE2}
+.beat strong{color:var(--cream);font-weight:500}
+@media (max-width:860px){.beats{grid-template-columns:1fr}}
+.cite{font-size:12.5px;color:var(--gray-light);margin-top:22px}
+.cite a{color:inherit}
+
+/* Calculator */
+.calc{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;margin-top:40px;align-items:start}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px}
+.field{padding:18px 0;border-bottom:1px solid var(--line)}
+.field:last-child{border-bottom:0}
+.field label{display:flex;justify-content:space-between;gap:12px;font-weight:500;font-size:15px}
+.field label output{font-family:var(--mono);font-size:14px;color:var(--copper);white-space:nowrap}
+.field .hint{font-size:13px;color:var(--gray);margin-top:4px}
+input[type=range]{width:100%;margin-top:12px;accent-color:var(--copper);height:28px}
+.result{background:var(--ink);color:var(--cream);border-radius:24px;padding:30px;position:sticky;top:96px}
+.result .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid rgba(245,239,230,.14)}
+.result .row:last-of-type{border-bottom:0}
+.result .k{color:#C3CAD4;font-size:14.5px}
+.result .v{font-family:var(--mono);font-size:16px}
+.result .total{margin-top:16px;padding-top:18px;border-top:1px solid rgba(245,239,230,.3)}
+.result .total .v{font-family:var(--display);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--copper-soft)}
+.result .nights{font-family:var(--display);font-size:clamp(36px,5vw,52px);line-height:1}
+.result .fine{font-size:12.5px;color:#9AA3AF;margin-top:16px}
+@media (max-width:900px){.calc{grid-template-columns:1fr}.result{position:static}}
+
+/* Cliff timeline */
+.cliff{margin-top:44px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:30px}
+.cliff svg{width:100%;height:auto;display:block}
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.compare .c{border-radius:18px;padding:22px;border:1px solid var(--line);background:#fff}
+.compare .c h4{font-family:var(--display);font-size:22px;font-weight:600}
+.compare .c p{font-size:15px;color:var(--gray);margin-top:6px}
+.compare .c .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--copper)}
+@media (max-width:860px){.compare{grid-template-columns:1fr}}
+
+/* Product */
+.gallery{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:auto auto;gap:16px;margin-top:40px}
+.g{position:relative;border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.g img{width:100%;height:100%;object-fit:cover}
+.g .super{position:absolute;left:12px;bottom:10px;background:rgba(255,255,255,.85);padding:3px 7px;border-radius:6px}
+.g.tall{grid-row:span 2}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.feature{border-top:2px solid var(--copper);padding-top:16px}
+.feature p{font-size:15px;color:var(--gray);margin-top:6px}
+@media (max-width:860px){.gallery{grid-template-columns:1fr}.g.tall{grid-row:auto}.features{grid-template-columns:1fr}}
+
+/* Video */
+.video-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:10px}
+.video-frame{position:relative;border-radius:24px;overflow:hidden;background:#000;box-shadow:0 30px 60px -30px rgba(14,26,43,.5)}
+.video-frame video{width:100%;display:block;background:#000}
+@media (max-width:860px){.video-wrap{grid-template-columns:1fr}.video-frame{max-width:420px;margin:0 auto}}
+
+/* Step-back */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper)}
+.step{padding:22px;border-right:1px solid var(--line);cursor:pointer;text-align:left;background:transparent;border-top:0;border-bottom:0;border-left:0;color:inherit;transition:background .2s}
+.step:last-child{border-right:0}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--copper)}
+.step h4{font-family:var(--display);font-size:26px;font-weight:600;margin-top:4px}
+.step p{font-size:14.5px;color:var(--gray);margin-top:6px}
+.step.on{background:#fff;box-shadow:inset 0 -3px 0 var(--copper)}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.curve-box{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:24px;margin-top:22px;align-items:stretch}
+.curve{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 22px 14px}
+.curve svg{width:100%;height:auto;display:block}
+.curve-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.toggle{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;padding:3px;background:var(--cream)}
+.toggle button{border:0;background:transparent;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:500;color:var(--gray)}
+.toggle button.on{background:var(--ink);color:var(--cream)}
+.step,.m,.stage,.c,.beat{min-width:0}
+@media (max-width:860px){.curve-box{grid-template-columns:minmax(0,1fr)}}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--gray);margin-top:8px}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+
+/* Phone */
+.phone{border-radius:36px;background:var(--ink);padding:14px;max-width:290px;margin:0 auto;width:100%;box-shadow:0 30px 60px -28px rgba(14,26,43,.55)}
+.screen{border-radius:26px;background:linear-gradient(180deg,#14243B,#0E1A2B);color:var(--cream);padding:22px 18px;min-height:470px;display:flex;flex-direction:column;gap:14px}
+.screen .bar{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#9AA3AF}
+.screen .logo{font-family:var(--display);font-size:24px;text-align:center}
+.ring{width:150px;height:150px;border-radius:50%;margin:4px auto 0;display:grid;place-items:center;text-align:center;background:conic-gradient(var(--copper-soft) calc(var(--p)*1%),rgba(245,239,230,.12) 0);position:relative}
+.ring::after{content:"";position:absolute;inset:10px;border-radius:50%;background:#12213A}
+.ring span{position:relative;z-index:1;font-size:13px;line-height:1.35;color:#C3CAD4}
+.ring b{display:block;font-family:var(--display);font-size:34px;color:var(--cream);font-weight:500}
+.card{background:rgba(245,239,230,.06);border:1px solid rgba(245,239,230,.1);border-radius:16px;padding:12px 14px;font-size:13px}
+.card .k{color:#9AA3AF;font-size:11.5px;font-family:var(--mono);letter-spacing:.04em}
+.card .v{margin-top:3px}
+.phone-cap{text-align:center;margin-top:12px}
+
+/* Measures */
+.measures{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px}
+.m{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px}
+.m .q{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--copper)}
+.m h4{font-family:var(--display);font-size:25px;font-weight:600;margin-top:6px;line-height:1.15}
+.m p{font-size:15px;color:var(--gray);margin-top:8px}
+.m .hope{margin-top:12px;font-size:14.5px;border-left:2px solid var(--copper-soft);padding-left:12px}
+.honest{margin-top:22px;border-radius:22px;padding:24px 26px;background:var(--ink);color:var(--cream);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.honest .badge{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--copper-soft);color:var(--copper-soft);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.honest p{color:#D5DAE2;font-size:15.5px}
+@media (max-width:860px){.measures{grid-template-columns:1fr}.honest{grid-template-columns:1fr}}
+
+/* Stages */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.stage{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.stage .img{aspect-ratio:1/1;background:#fff;position:relative}
+.stage .img img{width:100%;height:100%;object-fit:cover}
+.stage .img .super{position:absolute;left:12px;bottom:10px}
+.stage .b{padding:20px 22px 24px;border-top:1px solid var(--line)}
+.stage .age{font-family:var(--mono);font-size:12px;color:var(--copper);letter-spacing:.06em}
+.stage p{font-size:15px;color:var(--gray);margin-top:6px}
+@media (max-width:860px){.stages{grid-template-columns:1fr}}
+
+/* Join */
+.join{text-align:center}
+.join .lede{margin:18px auto 0}
+form.signup{margin:34px auto 0;display:flex;gap:10px;max-width:520px;flex-wrap:wrap;justify-content:center}
+form.signup input[type=email]{flex:1 1 260px;padding:15px 20px;border-radius:999px;border:1px solid rgba(245,239,230,.35);background:rgba(255,255,255,.06);color:var(--cream);font-size:16px}
+form.signup input::placeholder{color:#9AA3AF}
+form.signup button{padding:15px 26px;border-radius:999px;border:0;background:var(--copper);color:#fff;font-weight:500;font-size:15px}
+form.signup button:disabled{opacity:.6}
+.signup-status{min-height:22px;margin-top:14px;font-size:14px;color:#C3CAD4}
+.signup-status.is-ok{color:#9FD3B4}.signup-status.is-err{color:#F2B8A6}
+.hp{position:absolute;left:-9999px}
+
+footer{background:#0A1322;color:#9AA3AF;padding:44px 0 56px;font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between}
+footer a{color:#C3CAD4}
+footer .note{max-width:660px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Otoli home">Otoli</a>
+  <a class="top-cta" href="#join">Join the list</a>
+</header>
+
+<nav class="rail" aria-label="Chapters">
+  <a href="#top"><span class="lbl">3:14 a.m.</span><span class="dot"></span></a>
+  <a href="#nights"><span class="lbl">The nights</span><span class="dot"></span></a>
+  <a href="#cost"><span class="lbl">The cost</span><span class="dot"></span></a>
+  <a href="#cliff"><span class="lbl">The cliff</span><span class="dot"></span></a>
+  <a href="#meet"><span class="lbl">Meet Otoli</span><span class="dot"></span></a>
+  <a href="#stepback"><span class="lbl">Stepping back</span><span class="dot"></span></a>
+  <a href="#measure"><span class="lbl">What we measure</span><span class="dot"></span></a>
+  <a href="#grow"><span class="lbl">Grows with them</span><span class="dot"></span></a>
+  <a href="#join"><span class="lbl">Join</span><span class="dot"></span></a>
+</nav>
+
+<main>
+
+<!-- 0. HERO -->
+<section class="chapter hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <div class="clock"><span class="blink"></span>3:14 A.M.</div>
+      <h1 class="big serif">Built to soothe.<br><em>Designed to step back.</em></h1>
+      <p class="lede">Otoli is a smart infant sleep system in development. It is designed to help your baby settle, then give a little less help each night, until your baby can fall asleep on their own.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn solid" href="#nights">Walk through a night &darr;</a>
+        <a class="btn ghost" href="#meet">Meet Otoli</a>
+      </div>
+    </div>
+    <div class="hero-art rv"><img src="/otoli/img/bassinet.jpg" alt="Concept rendering of the Otoli bassinet on its smart base" width="900" height="1200"><span class="super">Concept rendering</span></div>
+  </div>
+</section>
+
+<!-- 1. THE NIGHTS -->
+<section class="chapter dark" id="nights">
+  <div class="wrap">
+    <span class="ch-num rv">01 / The nights</span>
+    <h2 class="title serif rv">You know this hour.</h2>
+    <p class="lede muted rv">The house is dark. Your baby has been crying for forty minutes. You've fed, changed, swaddled and shushed. You have to be up in a few hours, and you have no idea whether this is normal.</p>
+    <div class="beats">
+      <div class="beat rv"><div class="t">THE SLEEP YOU LOSE</div><p>In a study of more than 4,600 parents, <strong>first-time mothers lost about an hour of sleep a night</strong> in the first three months after birth, and parents' sleep had not fully recovered four to six years later.</p></div>
+      <div class="beat rv"><div class="t">THE GUESSWORK</div><p>At 3 a.m., <strong>every choice feels like a guess.</strong> Pick them up or wait? Feed again? Is the noise machine helping or hurting? Advice is everywhere, and none of it is about your baby.</p></div>
+      <div class="beat rv"><div class="t">THE SPENDING</div><p>So you buy things. <strong>A premium smart bassinet. Then sleep coaching.</strong> Each one helps for a while, and then you're back at 3 a.m. with a bigger receipt.</p></div>
+    </div>
+    <p class="cite rv">Source: Richter D, et al. Long-term effects of pregnancy and childbirth on sleep satisfaction and duration of first-time and experienced mothers and fathers. <em>Sleep</em>. 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/30649536/" target="_blank" rel="noopener">PubMed</a></p>
+    <a class="next rv" href="#cost">What is this costing you? <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 2. THE COST -->
+<section class="chapter deep" id="cost">
+  <div class="wrap">
+    <span class="ch-num rv">02 / The cost</span>
+    <h2 class="title serif rv">Add up your first year.</h2>
+    <p class="lede muted rv">Move the sliders to match your family. Nothing you enter leaves this page.</p>
+    <div class="calc">
+      <div class="panel rv">
+        <div class="field">
+          <label for="hrs">Sleep you lose on a hard night <output id="o-hrs"></output></label>
+          <div class="hint">First-time mothers averaged about an hour a night in the first three months (Richter, 2019).</div>
+          <input type="range" id="hrs" min="0" max="4" step="0.25" value="1">
+        </div>
+        <div class="field">
+          <label for="nights-wk">Hard nights each week <output id="o-nw"></output></label>
+          <input type="range" id="nights-wk" min="0" max="7" step="1" value="5">
+        </div>
+        <div class="field">
+          <label for="months">Months it goes on <output id="o-mo"></output></label>
+          <input type="range" id="months" min="1" max="24" step="1" value="6">
+        </div>
+        <div class="field">
+          <label for="bassinet">Smart bassinet or sleep gear <output id="o-ba"></output></label>
+          <div class="hint">Premium smart bassinets list for about $1,700. Add rentals, swaddles and sound machines.</div>
+          <input type="range" id="bassinet" min="0" max="3000" step="50" value="1700">
+        </div>
+        <div class="field">
+          <label for="coach">Sleep coaching or consultants <output id="o-co"></output></label>
+          <div class="hint">Virtual programs often cost hundreds. In-home help can run into the thousands of dollars.</div>
+          <input type="range" id="coach" min="0" max="8000" step="100" value="0">
+        </div>
+        <div class="field">
+          <label for="help">Overnight help (night nurse or nanny) <output id="o-he"></output></label>
+          <div class="hint">Nights per month you pay someone else to take the shift, at your local rate.</div>
+          <input type="range" id="help" min="0" max="20" step="1" value="0">
+          <label for="rate" style="margin-top:14px">Your rate for one night <output id="o-ra"></output></label>
+          <input type="range" id="rate" min="100" max="600" step="10" value="300">
+        </div>
+      </div>
+      <div class="result rv" aria-live="polite">
+        <div class="eyebrow" style="color:var(--copper-soft)">Your estimate</div>
+        <div class="row" style="margin-top:10px"><span class="k">Sleep lost</span><span class="v" id="r-hours"></span></div>
+        <div class="row"><span class="k">That's the same as</span><span class="v"><span class="nights" id="r-nights"></span> nights</span></div>
+        <div class="row"><span class="k">Gear</span><span class="v" id="r-gear"></span></div>
+        <div class="row"><span class="k">Coaching</span><span class="v" id="r-coach"></span></div>
+        <div class="row"><span class="k">Overnight help</span><span class="v" id="r-help"></span></div>
+        <div class="total"><div class="k" style="color:#C3CAD4">Spent so far, and still not sleeping</div><div class="v" id="r-total"></div></div>
+        <p class="fine">"Nights" means full 8-hour nights of sleep. This is an illustration based on your own inputs, not a prediction. Prices vary by product and region.</p>
+      </div>
+    </div>
+    <a class="next rv" href="#cliff">Why doesn't any of it last? <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 3. THE CLIFF -->
+<section class="chapter paper" id="cliff">
+  <div class="wrap">
+    <span class="ch-num rv">03 / The cliff</span>
+    <h2 class="title serif rv">Today's fixes soothe.<br>They don't teach.</h2>
+    <p class="lede muted rv">Most smart bassinets are built to respond to crying with more motion and more sound. That helps in the moment, but it isn't designed to help your baby need less. Then, around six months, your baby outgrows the bassinet, and the help disappears all at once.</p>
+    <div class="cliff rv">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Illustration: support from a typical smart bassinet stays high and then stops at about six months, while Otoli's design reduces support gradually over time.">
+        <defs><linearGradient id="gOt" x1="0" x2="1"><stop offset="0" stop-color="#A8533B"/><stop offset="1" stop-color="#C97A5E"/></linearGradient></defs>
+        <line x1="60" y1="250" x2="870" y2="250" stroke="#0E1A2B" stroke-opacity=".25"/>
+        <line x1="60" y1="40" x2="60" y2="250" stroke="#0E1A2B" stroke-opacity=".25"/>
+        <text x="60" y="275" font-family="JetBrains Mono" font-size="12" fill="#5B6471">Birth</text>
+        <text x="330" y="275" font-family="JetBrains Mono" font-size="12" fill="#5B6471">~6 months</text>
+        <text x="600" y="275" font-family="JetBrains Mono" font-size="12" fill="#5B6471">Crib</text>
+        <text x="810" y="275" font-family="JetBrains Mono" font-size="12" fill="#5B6471">Toddler</text>
+        <text x="20" y="150" font-family="JetBrains Mono" font-size="12" fill="#5B6471" transform="rotate(-90 20 150)">Soothing support</text>
+        <path id="pTyp" d="M60 70 L345 70 L345 250" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-dasharray="7 6"/>
+        <text x="200" y="58" font-family="Inter" font-size="14" fill="#0E1A2B">Typical smart bassinet</text>
+        <circle cx="345" cy="250" r="6" fill="#0E1A2B"/>
+        <text x="355" y="225" font-family="Inter" font-size="13" fill="#0E1A2B">Help stops. Start over in a crib.</text>
+        <path id="pOt" d="M60 80 C 200 85, 260 120, 345 150 S 520 205, 600 220 S 780 244, 870 247" fill="none" stroke="url(#gOt)" stroke-width="4" stroke-linecap="round"/>
+        <text x="610" y="200" font-family="Inter" font-size="14" fill="#A8533B" font-weight="600">Otoli's design: a little less each night</text>
+      </svg>
+      <p class="super" style="margin-top:8px">Illustrative design. Not clinical results.</p>
+    </div>
+    <div class="compare">
+      <div class="c rv"><span class="tag">Smart bassinet</span><h4>Soothes on demand</h4><p>Helpful in the moment. Built to respond, not to step back, and outgrown around six months.</p></div>
+      <div class="c rv"><span class="tag">Sleep coaching</span><h4>Teaches, briefly</h4><p>Real expertise for a few days or weeks. Then it's you, alone, carrying out the plan at 3 a.m.</p></div>
+      <div class="c rv" style="border-color:var(--copper)"><span class="tag">Otoli</span><h4>Soothes, then steps back</h4><p>Designed to help every night and to reduce that help gradually, at your baby's pace, from bassinet to crib.</p></div>
+    </div>
+    <a class="next rv" href="#meet">Meet Otoli <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 4. MEET OTOLI -->
+<section class="chapter" id="meet">
+  <div class="wrap">
+    <span class="ch-num rv">04 / Meet Otoli</span>
+    <div class="video-wrap">
+      <div class="rv">
+        <h2 class="title serif">A sleep coach that's there every night.</h2>
+        <p class="lede muted">Otoli is built by Dr. Aalap Shah, a pediatric anesthesiologist and father of two. "I put children to sleep for a living. At home, I faced the same 3 a.m. question as every other parent: how do I help my baby sleep, and eventually need less help?"</p>
+      </div>
+      <div class="video-frame rv">
+        <video id="founder" controls playsinline preload="metadata" poster="/otoli/media/founder-poster.jpg" aria-label="Founder video: Dr. Aalap Shah introduces Otoli">
+          <source data-wide="/otoli/media/founder-16x9.mp4" data-tall="/otoli/media/founder-9x16.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="g tall rv"><img src="/otoli/img/bassinet-side.jpg" alt="Concept rendering of the Otoli bassinet from the side" loading="lazy"><span class="super">Concept rendering</span></div>
+      <div class="g rv"><img src="/otoli/img/mesh.jpg" alt="Concept rendering detail: breathable mesh with the Otoli name" loading="lazy" style="aspect-ratio:16/10"><span class="super">Concept rendering</span></div>
+      <div class="g rv"><img src="/otoli/img/canopy.jpg" alt="Concept rendering detail: the bassinet canopy" loading="lazy" style="aspect-ratio:16/10"><span class="super">Concept rendering</span></div>
+    </div>
+    <div class="features">
+      <div class="feature rv"><h3>Gentle linear motion</h3><p>Smooth, steady movement in a straight line, inspired by research on how being carried calms babies.</p></div>
+      <div class="feature rv"><h3>Soft vibration and sound</h3><p>Low, gentle textures that can be dialed down separately from the motion.</p></div>
+      <div class="feature rv"><h3>Listens before it helps</h3><p>Designed to notice crying and restlessness, wait a moment for your baby to settle on their own, and only then step in.</p></div>
+    </div>
+    <a class="next rv" href="#stepback">See how it steps back <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 5. STEP BACK -->
+<section class="chapter deep" id="stepback">
+  <div class="wrap">
+    <span class="ch-num rv">05 / Stepping back</span>
+    <h2 class="title serif rv">Less help, night by night.</h2>
+    <p class="lede muted rv">Not a rigid calendar. A response to your child. Tap each step, then see what happens during a rough week.</p>
+    <div class="steps rv" role="tablist">
+      <button class="step on" data-step="0" role="tab" aria-selected="true"><span class="n">01</span><h4>Sense</h4><p>Notices crying and movement through the night.</p></button>
+      <button class="step" data-step="1" role="tab" aria-selected="false"><span class="n">02</span><h4>Soothe</h4><p>Responds with motion, vibration and sound when needed.</p></button>
+      <button class="step" data-step="2" role="tab" aria-selected="false"><span class="n">03</span><h4>Step back</h4><p>Gives a little less each night that goes well.</p></button>
+      <button class="step" data-step="3" role="tab" aria-selected="false"><span class="n">04</span><h4>Graduate</h4><p>Your baby falls asleep with little or no help.</p></button>
+    </div>
+    <div class="curve-box">
+      <div class="curve rv">
+        <div class="curve-top">
+          <span class="eyebrow">Support over time</span>
+          <div class="toggle" role="group" aria-label="Scenario">
+            <button class="on" data-scn="calm">A steady stretch</button>
+            <button data-scn="rough">A rough week</button>
+          </div>
+        </div>
+        <svg viewBox="0 0 600 300" id="curveSvg" aria-label="Illustrative chart of motion, vibration and sound support decreasing over time">
+          <line x1="40" y1="260" x2="590" y2="260" stroke="#0E1A2B" stroke-opacity=".2"/>
+          <line x1="40" y1="20" x2="40" y2="260" stroke="#0E1A2B" stroke-opacity=".2"/>
+          <text x="40" y="285" font-family="JetBrains Mono" font-size="11" fill="#8A929E">Start</text>
+          <text x="520" y="285" font-family="JetBrains Mono" font-size="11" fill="#8A929E">Graduate</text>
+          <rect id="roughBand" x="0" y="20" width="0" height="240" fill="#C97A5E" opacity=".12"/>
+          <text id="roughLbl" x="0" y="38" font-family="Inter" font-size="12" fill="#A8533B" opacity="0">Rough week: support paused and restored</text>
+          <path id="lm" fill="none" stroke="#A8533B" stroke-width="3.5" stroke-linecap="round"/>
+          <path id="lv" fill="none" stroke="#0E1A2B" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 6"/>
+          <path id="ls" fill="none" stroke="#5B6471" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="9 6"/>
+          <circle id="marker" r="6" fill="#A8533B"/>
+        </svg>
+        <div class="legend"><span><i style="background:#A8533B"></i>Motion</span><span><i style="background:#0E1A2B"></i>Vibration</span><span><i style="background:#5B6471"></i>Sound</span></div>
+        <p class="super" style="margin-top:10px">Illustrative design. Not clinical results.</p>
+      </div>
+      <div class="rv">
+        <div class="phone" aria-label="App concept">
+          <div class="screen">
+            <div class="bar"><span>9:41</span><span>App concept</span></div>
+            <div class="logo">Otoli</div>
+            <div class="ring" id="ring" style="--p:72"><span><b id="ringV">72%</b>support tonight</span></div>
+            <div class="card"><div class="k">LAST NIGHT</div><div class="v" id="appLast">Settled on their own twice before Otoli stepped in.</div></div>
+            <div class="card"><div class="k">THIS WEEK</div><div class="v" id="appWeek">Motion is stepping down. Sound stays steady for now.</div></div>
+          </div>
+        </div>
+        <p class="super phone-cap">App concept</p>
+      </div>
+    </div>
+    <a class="next rv" href="#measure">How will we know it works? <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 6. WHAT WE MEASURE -->
+<section class="chapter paper" id="measure">
+  <div class="wrap">
+    <span class="ch-num rv">06 / What we're measuring</span>
+    <h2 class="title serif rv">We'll measure before we promise.</h2>
+    <p class="lede muted rv">Otoli is still in development. We're designing a home study with pediatric sleep researchers to test our ideas with real families. Here is what we plan to measure, and what we hope to learn.</p>
+    <div class="measures">
+      <div class="m rv"><span class="q">Settling</span><h4>How long it takes to fall asleep</h4><p>Minutes from lights-out to sleep, with gentle motion on and with it off.</p><p class="hope">We hope to learn whether gentle motion helps babies settle sooner.</p></div>
+      <div class="m rv"><span class="q">Laydown</span><h4>Staying asleep after being put down</h4><p>Many babies fall asleep in your arms and wake the moment they're laid down.</p><p class="hope">We hope to learn whether a bassinet that's already moving makes that handoff easier.</p></div>
+      <div class="m rv"><span class="q">The night</span><h4>Night wakings and the longest stretch of sleep</h4><p>Measured with overnight video and small wearable movement sensors, not just the bassinet's own sensors.</p><p class="hope">We hope to learn how nights change as support steps down.</p></div>
+      <div class="m rv"><span class="q">Stepping back</span><h4>Whether babies come to rely on the motion</h4><p>How babies sleep without motion before and after a week with it.</p><p class="hope">We hope to learn whether gradual reduction avoids the dependence parents worry about.</p></div>
+      <div class="m rv"><span class="q">You</span><h4>Parent sleep and confidence</h4><p>Your sleep, your stress, and how sure you feel at 3 a.m.</p><p class="hope">We hope to learn whether a system that explains your baby's nights helps you rest too.</p></div>
+      <div class="m rv"><span class="q">Real life</span><h4>Whether families actually use it</h4><p>Setup, comfort, noise, and what parents would change.</p><p class="hope">We hope to learn what makes Otoli easy to live with.</p></div>
+    </div>
+    <div class="honest rv"><span class="badge">Our promise</span><p>We won't claim Otoli improves sleep until we've measured it. Studies with infants will be reviewed by an independent ethics board before they begin, and we'll share what we learn, including what doesn't work. Otoli is a general wellness product. It is not a medical device and does not monitor breathing or health.</p></div>
+    <a class="next rv" href="#grow">One base, three stages <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 7. GROWS -->
+<section class="chapter" id="grow">
+  <div class="wrap">
+    <span class="ch-num rv">07 / Grows with them</span>
+    <h2 class="title serif rv">No cliff at six months.</h2>
+    <p class="lede muted rv">One smart base, with planned bassinet, crib and toddler modules, designed to carry the same gentle approach from birth through the first three years.</p>
+    <div class="stages">
+      <div class="stage rv"><div class="img"><img src="/otoli/img/bassinet.jpg" alt="Concept rendering of the Otoli bassinet module" loading="lazy"><span class="super">Concept rendering</span></div><div class="b"><span class="age">BIRTH TO ABOUT 6 MONTHS</span><h3>Bassinet</h3><p>The most help, when your baby needs it most, already beginning to step back.</p></div></div>
+      <div class="stage rv"><div class="img"><img src="/otoli/img/crib.jpg" alt="Concept rendering of the planned Otoli crib module" loading="lazy"><span class="super">Concept rendering. Planned module.</span></div><div class="b"><span class="age">ABOUT 6 TO 18 MONTHS</span><h3>Crib</h3><p>Same base, same routine, so the move to a crib isn't a fresh start.</p></div></div>
+      <div class="stage rv"><div class="img"><img src="/otoli/img/toddler.jpg" alt="Concept rendering of the planned Otoli toddler module" loading="lazy"><span class="super">Concept rendering. Planned module.</span></div><div class="b"><span class="age">ABOUT 18 TO 36 MONTHS</span><h3>Toddler bed</h3><p>Independent sleep, with the base still there to understand the nights.</p></div></div>
+    </div>
+    <a class="next rv" href="#join">Follow along <span class="arr">&darr;</span></a>
+  </div>
+</section>
+
+<!-- 8. JOIN -->
+<section class="chapter dark join" id="join">
+  <div class="wrap">
+    <span class="ch-num rv">08 / Follow along</span>
+    <h2 class="title serif rv">Be the first to know.</h2>
+    <p class="lede muted rv">We'll share what we're building, what we're testing, and what we learn along the way. No spam, and you can leave any time.</p>
+    <form class="signup rv" id="signup-form" novalidate>
+      <label for="signup-email" class="hp">Email address</label>
+      <input id="signup-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button id="signup-btn" type="submit">Join the list</button>
+    </form>
+    <div class="signup-status" id="signup-status" role="status"></div>
+    <p class="cite" style="margin-top:12px">By joining, you agree to our <a href="/privacy">Privacy Policy</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:var(--cream);font-size:26px">Otoli</div>
+      <p style="margin-top:6px">By Vestibrum, Inc. &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="mailto:info@vestibrum.com">info@vestibrum.com</a></p>
+    </div>
+    <p class="note">Otoli is in development and is not yet available for sale. Images are concept renderings; crib and toddler modules are planned. Otoli is a general wellness product, not a medical device, and is not intended to diagnose, treat or monitor any condition. Always follow safe sleep guidance: place your baby on their back, on a flat, firm surface, with nothing else in the sleep space.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Reveal on scroll */
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    rv.forEach(function(el){io.observe(el);});
+  } else rv.forEach(function(el){el.classList.add('in');});
+
+  /* Progress bar and chapter rail */
+  var bar=document.getElementById('progress');
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var h=document.documentElement; var p=h.scrollTop/(h.scrollHeight-h.clientHeight);
+    bar.style.width=(Math.max(0,Math.min(1,p))*100)+'%';
+    var mid=window.innerHeight*.45, idx=0;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<mid) idx=i; });
+    links.forEach(function(a,i){a.classList.toggle('on',i===idx);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* Cost calculator */
+  function $(id){return document.getElementById(id);}
+  var money=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
+  function calc(){
+    var hrs=+$('hrs').value, nw=+$('nights-wk').value, mo=+$('months').value,
+        ba=+$('bassinet').value, co=+$('coach').value, he=+$('help').value, ra=+$('rate').value;
+    $('o-hrs').textContent=hrs+(hrs===1?' hour':' hours');
+    $('o-nw').textContent=nw+(nw===1?' night':' nights');
+    $('o-mo').textContent=mo+(mo===1?' month':' months');
+    $('o-ba').textContent=money(ba);
+    $('o-co').textContent=money(co);
+    $('o-he').textContent=he+(he===1?' night/mo':' nights/mo');
+    $('o-ra').textContent=money(ra);
+    var weeks=mo*4.345, lost=hrs*nw*weeks, helpCost=he*ra*mo;
+    $('r-hours').textContent=Math.round(lost).toLocaleString('en-US')+' hours';
+    $('r-nights').textContent=Math.round(lost/8).toLocaleString('en-US');
+    $('r-gear').textContent=money(ba);
+    $('r-coach').textContent=money(co);
+    $('r-help').textContent=money(helpCost);
+    $('r-total').textContent=money(ba+co+helpCost);
+  }
+  ['hrs','nights-wk','months','bassinet','coach','help','rate'].forEach(function(id){$(id).addEventListener('input',calc);});
+  calc();
+
+  /* Step-back curve (illustrative only) */
+  var W=550,X0=40,Y0=260,H=230,N=120;
+  var scn='calm', step=0;
+  function teff(t,rough){
+    if(!rough) return t;
+    var a=.42,b=.56;
+    if(t<a) return t;
+    if(t<b) return a-.07*Math.sin(Math.PI*(t-a)/(b-a));
+    return t-(b-a);
+  }
+  function f(t,k,start,rough){
+    var u=teff(t,rough);
+    var p=Math.min(1,Math.max(0,(u-start)/(1-start)));
+    return Math.pow(1-p,k);
+  }
+  function path(k,start,rough,scale){
+    var d='';
+    for(var i=0;i<=N;i++){var t=i/N, v=f(t,k,start,rough)*scale; d+=(i?'L':'M')+(X0+t*W).toFixed(1)+' '+(Y0-v*H).toFixed(1);}
+    return d;
+  }
+  function draw(){
+    var r=scn==='rough';
+    $('lm').setAttribute('d',path(1.5,.06,r,1));
+    $('lv').setAttribute('d',path(.8,.12,r,.82));
+    $('ls').setAttribute('d',path(1.0,.08,r,.7));
+    var band=$('roughBand'), lbl=$('roughLbl');
+    if(r){band.setAttribute('x',X0+.42*W);band.setAttribute('width',.14*W);lbl.setAttribute('x',X0+.42*W+4);lbl.setAttribute('opacity','1');}
+    else{band.setAttribute('width',0);lbl.setAttribute('opacity','0');}
+    var ts=[.04,.2,.62,.97][step], v=f(ts,1.5,.06,r);
+    var m=$('marker'); m.setAttribute('cx',X0+ts*W); m.setAttribute('cy',Y0-v*H);
+    var pct=Math.round(v*100); $('ring').style.setProperty('--p',pct); $('ringV').textContent=pct+'%';
+    var msgs=[
+      ['Noticed 3 stirrings. Two settled on their own.','Learning your baby\'s nights.'],
+      ['Stepped in twice, for about 6 minutes each.','Full support while your baby settles in.'],
+      [r?'A rough few nights, so support was restored for now.':'Settled on their own twice before Otoli stepped in.', r?'Stepping down will resume after a few calm nights.':'Motion is stepping down. Sound stays steady for now.'],
+      ['Fell asleep with no help at all.','Ready for the crib, on the same base.']
+    ][step];
+    $('appLast').textContent=msgs[0]; $('appWeek').textContent=msgs[1];
+  }
+  [].forEach.call(document.querySelectorAll('.step'),function(b){b.addEventListener('click',function(){
+    step=+b.dataset.step; [].forEach.call(document.querySelectorAll('.step'),function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b);}); draw();});});
+  [].forEach.call(document.querySelectorAll('.toggle button'),function(b){b.addEventListener('click',function(){
+    scn=b.dataset.scn; [].forEach.call(document.querySelectorAll('.toggle button'),function(x){x.classList.toggle('on',x===b);}); draw();});});
+  draw();
+
+  /* Founder video: vertical cut on phones, wide cut elsewhere */
+  var v=$('founder');
+  if(v){ var s=v.querySelector('source'); var tall=window.matchMedia('(max-width: 640px)').matches;
+    s.src=tall?s.dataset.tall:s.dataset.wide; v.load(); }
+
+  /* Waitlist */
+  var FORM_ENDPOINT='https://formspree.io/f/mppzwbdp', FALLBACK='info@vestibrum.com';
+  var form=$('signup-form'), input=$('signup-email'), btn=$('signup-btn'), status=$('signup-status');
+  function say(m,k){status.textContent=m;status.className='signup-status'+(k?' is-'+k:'');}
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); var email=(input.value||'').trim();
+    if(!email||!input.checkValidity()){say('Please enter a valid email address.','err');input.focus();return;}
+    if(form.querySelector('[name="_gotcha"]').value){say('Thank you. You are on the list.','ok');form.reset();return;}
+    input.disabled=btn.disabled=true; btn.textContent='Sending...'; say('');
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({email:email,source:'getotoli.com consumer site'})})
+      .then(function(r){if(!r.ok)throw 0;form.reset();say('Thank you. You are on the list.','ok');})
+      .catch(function(){say('Something went wrong. Please email '+FALLBACK+' and we will add you.','err');})
+      .finally(function(){input.disabled=btn.disabled=false;btn.textContent='Join the list';});
+  });
+})();
+</script>
+</body>
+</html>

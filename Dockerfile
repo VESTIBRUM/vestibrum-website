@@ -8,4 +8,5 @@ COPY terms.html /usr/share/nginx/html/terms.html
 COPY robots.txt /usr/share/nginx/html/robots.txt
 COPY sitemap.xml /usr/share/nginx/html/sitemap.xml
 COPY otoli-investor-brief.pdf /usr/share/nginx/html/otoli-investor-brief.pdf
+COPY otoli /usr/share/nginx/html/otoli
 COPY otolithic_organs_diagram.png /usr/share/nginx/html/otolithic_organs_diagram.png

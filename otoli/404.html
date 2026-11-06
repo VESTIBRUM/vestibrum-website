@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found | Otoli</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A2B; --cream:#F5EFE6; --copper:#A8533B; --copper-soft:#C97A5E; --gray:#5B6471;
+  --line:rgba(14,26,43,.12);
+  --display:'Cormorant Garamond','Times New Roman',serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
+  --gutter:clamp(16px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden;min-height:100svh;display:flex;flex-direction:column}
+a{color:inherit}
+
+header.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);background:rgba(245,239,230,.86);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:30px;font-weight:600;text-decoration:none;letter-spacing:.01em;line-height:1}
+.top-cta{font-size:14px;font-weight:500;text-decoration:none;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--cream)}
+
+main{flex:1;display:flex;align-items:center;padding:120px var(--gutter) 80px}
+.inner{max-width:640px;margin:0 auto;text-align:center}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:18px}
+h1{font-family:var(--display);font-weight:500;letter-spacing:-.01em;font-size:clamp(40px,8vw,76px);line-height:1.02;overflow-wrap:break-word}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--gray);margin:20px 0 34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--ink);background:var(--ink);color:var(--cream)}
+.btn:hover{background:transparent;color:var(--ink)}
+
+footer{background:#0A1322;color:#9AA3AF;padding:32px var(--gutter) 40px;font-size:13.5px;text-align:center}
+footer a{color:#C3CAD4}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Otoli home">Otoli</a>
+  <a class="top-cta" href="/#join">Join the list</a>
+</header>
+
+<main>
+  <div class="inner">
+    <span class="eyebrow">404</span>
+    <h1>This page drifted off.</h1>
+    <p class="lede">Let's get you back to the beginning.</p>
+    <a class="btn" href="/">Back to Otoli <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</main>
+
+<footer>
+  <p>Otoli by Vestibrum, Inc. &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p>
+</footer>
+
+</body>
+</html>
