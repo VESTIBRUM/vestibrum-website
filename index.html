@@ -409,6 +409,33 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
+/* Bridge to the consumer site */
+.bridge {
+  margin: 56px 0 0;
+  padding: 28px 32px;
+  border: 1px solid rgba(14,26,43,0.14);
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  background: rgba(255,255,255,0.45);
+}
+.bridge-text { max-width: 540px; }
+.bridge-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 6px;
+}
+.bridge-text p { margin: 0; font-size: 17px; line-height: 1.55; }
+.bridge .btn-primary { white-space: nowrap; }
+@media (max-width: 640px) { .bridge { padding: 22px; } .bridge .btn-primary { width: 100%; justify-content: center; } }
+
 .citation-block {
   border-left: 2px solid var(--copper);
   padding: 16px 0 16px 24px;
@@ -941,6 +968,14 @@ footer {
         </div>
 
         <p>Vestibrum was founded to close that gap: to engineer infant sleep technology around the actual mechanism rather than around the symptom. The patent-pending platform is built on a true three-axis gimbal mechanism delivering precisely-calibrated lateral translation, paired with a closed-loop adaptive AI protocol that teaches infants to self-soothe rather than escalating stimulation when they cry.</p>
+
+        <div class="bridge">
+          <div class="bridge-text">
+            <span class="bridge-kicker">That is the mechanism. This is the 3 a.m. problem.</span>
+            <p>Lost sleep, a premium bassinet that stops helping at six months, and sleep coaching that leaves at 3 a.m. See the problem from a parent's side, and what Otoli is designed to change.</p>
+          </div>
+          <a href="https://getotoli.com/#nights" class="btn-primary">Walk through a night<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
       </div>
     </div>
   </div>

@@ -67,6 +67,11 @@ h3{font-family:var(--display);font-weight:600;font-size:26px;line-height:1.15}
 .chapter.dark .next:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
 .next .arr{transition:transform .2s}
 .next:hover .arr{transform:translateY(3px)}
+.next-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:44px}
+.next-row .next{margin-top:0}
+.aside-link{font-size:14.5px;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line-strong);padding-bottom:2px}
+.aside-link:hover{color:var(--copper);border-color:var(--copper)}
+.inline-link{color:var(--copper);text-decoration:none;border-bottom:1px solid currentColor;white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--ink)}
 .btn.solid{background:var(--ink);color:var(--cream)}
 .btn.ghost{background:transparent;color:var(--ink)}
@@ -361,7 +366,10 @@ footer .note{max-width:660px;line-height:1.6}
       <div class="c rv"><span class="tag">Sleep coaching</span><h4>Teaches, briefly</h4><p>Real expertise for a few days or weeks. Then it's you, alone, carrying out the plan at 3 a.m.</p></div>
       <div class="c rv" style="border-color:var(--copper)"><span class="tag">Otoli</span><h4>Soothes, then steps back</h4><p>Designed to help every night and to reduce that help gradually, at your baby's pace, from bassinet to crib.</p></div>
     </div>
-    <a class="next rv" href="#meet">Meet Otoli <span class="arr">&darr;</span></a>
+    <div class="next-row rv">
+      <a class="next" href="#meet">Meet Otoli <span class="arr">&darr;</span></a>
+      <a class="aside-link" href="https://vestibrum.com/#science">Want the science first? Read the research behind gentle motion <span aria-hidden="true">&rarr;</span></a>
+    </div>
   </div>
 </section>
 
@@ -386,7 +394,7 @@ footer .note{max-width:660px;line-height:1.6}
       <div class="g rv"><img src="/otoli/img/canopy.jpg" alt="Concept rendering detail: the bassinet canopy" loading="lazy" style="aspect-ratio:16/10"><span class="super">Concept rendering</span></div>
     </div>
     <div class="features">
-      <div class="feature rv"><h3>Gentle linear motion</h3><p>Smooth, steady movement in a straight line, inspired by research on how being carried calms babies.</p></div>
+      <div class="feature rv"><h3>Gentle linear motion</h3><p>Smooth, steady movement in a straight line, inspired by research on how being carried calms babies. <a class="inline-link" href="https://vestibrum.com/#science">The science</a></p></div>
       <div class="feature rv"><h3>Soft vibration and sound</h3><p>Low, gentle textures that can be dialed down separately from the motion.</p></div>
       <div class="feature rv"><h3>Listens before it helps</h3><p>Designed to notice crying and restlessness, wait a moment for your baby to settle on their own, and only then step in.</p></div>
     </div>
@@ -503,7 +511,7 @@ footer .note{max-width:660px;line-height:1.6}
   <div class="wrap">
     <div>
       <div class="brand" style="color:var(--cream);font-size:26px">Otoli</div>
-      <p style="margin-top:6px">By Vestibrum, Inc. &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="mailto:info@vestibrum.com">info@vestibrum.com</a></p>
+      <p style="margin-top:6px">By Vestibrum, Inc. &middot; <a href="https://vestibrum.com/#science">The science</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="mailto:info@vestibrum.com">info@vestibrum.com</a></p>
     </div>
     <p class="note">Otoli is in development and is not yet available for sale. Images are concept renderings; crib and toddler modules are planned. Otoli is a general wellness product, not a medical device, and is not intended to diagnose, treat or monitor any condition. Always follow safe sleep guidance: place your baby on their back, on a flat, firm surface, with nothing else in the sleep space.</p>
   </div>
