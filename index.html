@@ -909,6 +909,7 @@ footer {
   .contact { padding: 80px 24px; }
 }
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e47965d3-ddeb-4531-a512-54b022082514" data-domains="vestibrum.com,www.vestibrum.com,getotoli.com,www.getotoli.com"></script>
 </head>
 
 <body>
@@ -922,7 +923,7 @@ footer {
     <a href="#product" class="nav-link">Otoli</a>
     <a href="#proof" class="nav-link">Demo</a>
     <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-cta">Contact</a>
+    <a href="#contact" class="nav-cta" data-umami-event="Nav contact">Contact</a>
   </div>
 </nav>
 
@@ -1114,7 +1115,7 @@ footer {
         </div>
       </div>
       <div class="proof-cta">
-        <a class="btn-primary" href="mailto:info@vestibrum.com?subject=Otoli%20bench%20demo%20access&amp;body=Hi%20Vestibrum%20team%2C%0A%0AI%27d%20like%20to%20see%20the%20Otoli%20bench%20demo%20and%20learn%20more.%0A%0AName%3A%0AOrganization%3A%0ARole%20(investor%2C%20partner%2C%20clinician)%3A%0A">
+        <a class="btn-primary" href="mailto:info@vestibrum.com?subject=Otoli%20bench%20demo%20access&amp;body=Hi%20Vestibrum%20team%2C%0A%0AI%27d%20like%20to%20see%20the%20Otoli%20bench%20demo%20and%20learn%20more.%0A%0AName%3A%0AOrganization%3A%0ARole%20(investor%2C%20partner%2C%20clinician)%3A%0A" data-umami-event="Request demo access">
           Request access
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -1206,7 +1207,7 @@ footer {
 
   <div class="contact-direct">
     <p class="contact-direct-label">For investors, partners, and clinicians</p>
-    <a href="mailto:info@vestibrum.com">info@vestibrum.com</a>
+    <a href="mailto:info@vestibrum.com" data-umami-event="Email click">info@vestibrum.com</a>
   </div>
 </section>
 
@@ -1218,7 +1219,7 @@ footer {
     </div>
     <div class="footer-meta">
       <p>Delaware C-Corp · USPTO Provisional Patent · 2026</p>
-      <p style="margin-top: 8px;"><a href="mailto:info@vestibrum.com">info@vestibrum.com</a></p>
+      <p style="margin-top: 8px;"><a href="mailto:info@vestibrum.com" data-umami-event="Email click">info@vestibrum.com</a></p>
       <p style="margin-top: 8px;"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
     </div>
   </div>
@@ -1302,6 +1303,7 @@ footer {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         form.reset();
         say('Thank you. You are on the list.', 'ok');
+        window.umami && window.umami.track('Waitlist signup', { site: location.hostname });
       })
       .catch(function () {
         say(

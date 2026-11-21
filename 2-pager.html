@@ -793,6 +793,7 @@ footer {
   }
 }
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e47965d3-ddeb-4531-a512-54b022082514" data-domains="vestibrum.com,www.vestibrum.com,getotoli.com,www.getotoli.com"></script>
 </head>
 
 <body>
@@ -1013,10 +1014,29 @@ footer {
   <p>Our engineering partner has built Otoli's first testbed on a modified commercial bassinet, running our own sensing and motion control. In this first demonstration, the system listens to the room, recognizes an infant's cry on the device itself, starts gentle motion, and winds the motion down on its own once the crying stops.</p>
 
   <div class="demo-video">
-    <video controls playsinline preload="metadata" poster="/media/otoli-cry-loop-demo-poster.jpg">
+    <video id="bench-video" controls playsinline preload="metadata" poster="/media/otoli-cry-loop-demo-poster.jpg">
       <source src="/media/otoli-cry-loop-demo.mp4" type="video/mp4">
       Your browser cannot play this video.
     </video>
+    <script>
+    (function () {
+      var v = document.getElementById('bench-video');
+      if (!v) return;
+      var played = false, ninety = false;
+      v.addEventListener('play', function () {
+        if (played) return;
+        played = true;
+        window.umami && window.umami.track('Bench video play');
+      });
+      v.addEventListener('timeupdate', function () {
+        if (ninety || !v.duration) return;
+        if (v.currentTime / v.duration >= 0.9) {
+          ninety = true;
+          window.umami && window.umami.track('Bench video 90%');
+        }
+      });
+    })();
+    </script>
   </div>
 
   <div class="demo-points">
@@ -1111,7 +1131,7 @@ footer {
         <path d="M2 7h10M7 2l5 5-5 5"/>
       </svg>
     </a>
-    <a href="/otoli-investor-brief.pdf" class="btn-ghost" download>Download as PDF</a>
+    <a href="/otoli-investor-brief.pdf" class="btn-ghost" download data-umami-event="Investor brief PDF">Download as PDF</a>
   </div>
 </section>
 
@@ -1125,7 +1145,7 @@ footer {
       <p>Delaware C-Corp · USPTO Provisional Patent · 2026</p>
       <p>
         <a href="/">vestibrum.com</a> ·
-        <a href="mailto:info@vestibrum.com">info@vestibrum.com</a>
+        <a href="mailto:info@vestibrum.com" data-umami-event="Email click">info@vestibrum.com</a>
       </p>
       <p>
         <a href="/privacy">Privacy</a> ·
