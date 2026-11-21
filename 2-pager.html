@@ -393,6 +393,36 @@ table.compare tr.is-otoli td:first-child {
 
 .traction-item p { margin: 0; font-size: 16px; }
 
+/* ============ PROOF OF DESIGN ============ */
+.demo-video {
+  margin: 32px 0 20px;
+  border: 1px solid var(--line-strong);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+.demo-video video { display: block; width: 100%; height: 100%; }
+.demo-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+.demo-point { padding: 24px 24px 20px; border-right: 1px solid var(--line); }
+.demo-point:last-child { border-right: none; }
+.demo-point .traction-label { display: block; margin-bottom: 10px; }
+.brief section .demo-point p { font-size: 15px; margin: 0; }
+.demo-note { font-size: 13.5px !important; color: var(--gray); }
+@media (max-width: 640px) {
+  .demo-points { grid-template-columns: 1fr; }
+  .demo-point { border-right: none; border-bottom: 1px solid var(--line); }
+  .demo-point:last-child { border-bottom: none; }
+}
+@media print {
+  .demo-video { display: none; }
+}
+
 /* ============ ROADMAP ============ */
 .roadmap {
   display: flex;
@@ -976,9 +1006,40 @@ footer {
   </div>
 </section>
 
+<!-- PROOF OF DESIGN -->
+<section id="proof">
+  <span class="sec-eyebrow">07 / Proof of Design</span>
+  <h2 class="sec-title serif">The core loop is <em>working on the bench</em>.</h2>
+  <p>Our engineering partner has built Otoli's first testbed on a modified commercial bassinet, running our own sensing and motion control. In this first demonstration, the system listens to the room, recognizes an infant's cry on the device itself, starts gentle motion, and winds the motion down on its own once the crying stops.</p>
+
+  <div class="demo-video">
+    <video controls playsinline preload="metadata" poster="/media/otoli-cry-loop-demo-poster.jpg">
+      <source src="/media/otoli-cry-loop-demo.mp4" type="video/mp4">
+      Your browser cannot play this video.
+    </video>
+  </div>
+
+  <div class="demo-points">
+    <div class="demo-point">
+      <span class="traction-label">Hears the right sound</span>
+      <p>Speech, a barking dog, knocking, music, coughing, alarms and a vacuum are ignored. A recorded infant cry is recognized.</p>
+    </div>
+    <div class="demo-point">
+      <span class="traction-label">Responds on its own</span>
+      <p>Detection and control run locally on the device, with no cloud connection, and motion begins within seconds of the cry.</p>
+    </div>
+    <div class="demo-point">
+      <span class="traction-label">Steps back</span>
+      <p>When the crying stops, motion winds down and stops. That step back is the foundation of the weaning protocol.</p>
+    </div>
+  </div>
+
+  <p class="demo-note">Bench testbed, November 2026. Recorded sounds and a test weight stand in for an infant; no infant is used in any test rig. Next: the second motion axis, under-mattress movement sensing, and the full step-down loop in early 2027.</p>
+</section>
+
 <!-- ROADMAP -->
 <section>
-  <span class="sec-eyebrow">07 / Roadmap</span>
+  <span class="sec-eyebrow">08 / Roadmap</span>
   <h2 class="sec-title serif">Three milestones <em>reprice the company</em>.</h2>
 
   <div class="roadmap">
@@ -1000,7 +1061,7 @@ footer {
 
 <!-- TEAM -->
 <section>
-  <span class="sec-eyebrow">08 / The Team</span>
+  <span class="sec-eyebrow">09 / The Team</span>
   <h2 class="sec-title serif">Clinical depth, paired with <em>operating scale</em>.</h2>
 
   <div class="team-grid">
@@ -1020,16 +1081,16 @@ footer {
       <p class="team-bio">Mechanical engineer and ICAEW Fellow with public-market financing and capital-raise leadership, and the engineering fluency to hold technical partners accountable.</p>
     </div>
     <div class="team-member">
-      <h3 class="team-name serif">Khyati Davey</h3>
-      <p class="team-role">Advisor</p>
-      <p class="team-bio">Fractional MedTech executive with commercialization experience across regulated medical devices.</p>
+      <h3 class="team-name serif">Aliasgar Morbi</h3>
+      <p class="team-role">Interim CTO</p>
+      <p class="team-bio">President of Brash Product Development, the design and engineering firm building the Otoli testbed. Leads the hardware, motion control and sensing behind the working cry-to-motion loop on the bench.</p>
     </div>
   </div>
 </section>
 
 <!-- VISION -->
 <section>
-  <span class="sec-eyebrow">09 / Vision</span>
+  <span class="sec-eyebrow">10 / Vision</span>
   <h2 class="sec-title serif">Transform one of the most exhausting periods of early parenthood into a <em>restorative</em> one.</h2>
   <p>Safer, smarter, and more restorative, for every family, not just the first six months.</p>
 </section>

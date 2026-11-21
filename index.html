@@ -865,6 +865,21 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+/* ============ PROOF TEASER ============ */
+.proof { background: var(--cream-deep); }
+.proof-figure { position: relative; margin: 40px 0 0; border: 1px solid var(--line); overflow: hidden; background: var(--ink); }
+.proof-figure img { display: block; width: 100%; height: auto; filter: saturate(0.9); }
+.proof-figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,26,43,0) 55%, rgba(14,26,43,0.72) 100%); pointer-events: none; }
+.proof-badge { position: absolute; left: 20px; bottom: 18px; z-index: 1; display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); }
+.proof-badge svg { width: 14px; height: 14px; }
+.proof-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 40px 0; }
+.proof-points h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.proof-points p { color: var(--gray); font-size: 15px; line-height: 1.6; }
+.proof-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.proof-note { color: var(--gray); font-size: 14px; line-height: 1.6; max-width: 520px; }
+@media (max-width: 1024px) { .proof-points { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 640px) { .proof-cta .btn-primary { width: 100%; justify-content: center; } .proof-badge { left: 14px; bottom: 12px; font-size: 10px; } }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
   .hero {
@@ -905,6 +920,7 @@ footer {
   <div class="nav-links">
     <a href="#science" class="nav-link">Science</a>
     <a href="#product" class="nav-link">Otoli</a>
+    <a href="#proof" class="nav-link">Demo</a>
     <a href="#about" class="nav-link">About</a>
     <a href="#contact" class="nav-cta">Contact</a>
   </div>
@@ -1061,11 +1077,58 @@ footer {
   </div>
 </section>
 
-<!-- SECTION 03: ABOUT -->
+<!-- SECTION 03: PROOF OF DESIGN (teaser; full video is shared privately) -->
+<section class="proof" id="proof">
+  <div class="section-grid">
+    <div class="section-marker">
+      <span class="section-num">03 / Proof of Design</span>
+      <span class="section-marker-label">Phase 1 testbed</span>
+    </div>
+    <div class="section-content">
+      <h2 class="section-title serif">
+        The core loop is <em>working on the bench</em>.
+      </h2>
+      <p class="section-lede">
+        Our Phase 1 testbed now runs the loop at the heart of Otoli: it hears an infant cry, starts gentle motion on its own, and steps back when the crying stops.
+      </p>
+      <figure class="proof-figure">
+        <img src="/media/otoli-bench-teaser.jpg" width="1600" height="900" loading="lazy"
+             alt="The Otoli bench testbed: a bassinet on its motion base, with a laptop showing a detected infant cry and the motion base ramping up">
+        <figcaption class="proof-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          Full bench video available on request
+        </figcaption>
+      </figure>
+      <div class="proof-points">
+        <div>
+          <h3>Hears the right sound</h3>
+          <p>Picks out an infant cry and ignores everyday noise like a barking dog, a knock at the door or a cough.</p>
+        </div>
+        <div>
+          <h3>Responds on its own</h3>
+          <p>A detected cry starts gentle motion, with no one touching a control.</p>
+        </div>
+        <div>
+          <h3>Steps back</h3>
+          <p>When the crying stops, the motion winds down: the behavior our adaptive weaning protocol builds on.</p>
+        </div>
+      </div>
+      <div class="proof-cta">
+        <a class="btn-primary" href="mailto:info@vestibrum.com?subject=Otoli%20bench%20demo%20access&amp;body=Hi%20Vestibrum%20team%2C%0A%0AI%27d%20like%20to%20see%20the%20Otoli%20bench%20demo%20and%20learn%20more.%0A%0AName%3A%0AOrganization%3A%0ARole%20(investor%2C%20partner%2C%20clinician)%3A%0A">
+          Request access
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="proof-note">The full demonstration is shared privately with investors and partners and will be available in our deal room. Bench testing uses test weights only; there is no infant in any test rig.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: ABOUT -->
 <section class="about" id="about">
   <div class="section-grid">
     <div class="section-marker">
-      <span class="section-num">03 / The Company</span>
+      <span class="section-num">04 / The Company</span>
       <span class="section-marker-label">Vestibrum, Inc.</span>
     </div>
     <div class="section-content">
@@ -1095,9 +1158,9 @@ footer {
             <p class="team-bio">Operating background spanning two consumer DTC brands. Owns commercialization, brand, and consumer go-to-market for Vestibrum. Architecting the Otoli consumer launch.</p>
           </div>
           <div class="team-member">
-            <h4 class="team-name serif">Khyati Davey</h4>
-            <p class="team-role">Advisor</p>
-            <p class="team-bio">Fractional MedTech executive with commercialization experience across regulated medical devices. Brings deep category and regulatory expertise to the Vestibrum strategic roadmap.</p>
+            <h4 class="team-name serif">Aliasgar Morbi</h4>
+            <p class="team-role">Interim CTO</p>
+            <p class="team-bio">President of Brash Product Development, the design and engineering firm building the Otoli testbed. Leads the hardware, motion control and sensing behind the working cry-to-motion loop on the bench.</p>
           </div>
         </div>
 
